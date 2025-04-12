@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="keywords"
+			content="橘猫接码平台,Receive SMS Online China,在线短信接收,短信验证码接收,在线短信接收平台,免费短信平台,免费接码平台,免费验证码接收平台,代收手机短信验证码,国外短信接收平台,手机短信验证码,手机验证码平台,接码平台,短信验证码,验证码平台,手机验证码,网站验证码短信平台,接收手机验证码平台,sms短信，接码号 - 在线接收短信验证码，接码短信平台，短信验证码，验证码接收平台，验证码接收，验证码平台，接码，接码验证码平台app，接码软件，接码注册短信平台，接码验证码平台，接码软件，接码网站，free sms receive">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>橘猫接码 - 注册</title>
+		<link href="./css/bootstrap.min.css" rel="stylesheet">
+		<style>
+			body {
+				background-image: url('./img/background.jpg');
+				background-size: cover;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100vh;
+				margin: 0;
+			}
+
+			.form-group {
+				margin-top: 5px;
+			}
+
+			.modal-header {
+				background-color: #ff8a70;
+				color: white;
+			}
+
+			.register-container {
+				background-color: white;
+				padding: 20px;
+				border-radius: 8px;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+				width: 100%;
+				max-width: 400px;
+			}
+
+			.register-header {
+				background-color: #ff8a70;
+				color: white;
+				padding: 10px;
+				text-align: center;
+				border-radius: 8px;
+			}
+
+			.register-form {
+				margin-top: 20px;
+			}
+
+			.register-form input[type="text"],
+			.register-form input[type="password"] {
+				width: calc(100% - 22px);
+				padding: 10px;
+				margin-bottom: 10px;
+				border: 1px solid #ccc;
+				border-radius: 4px;
+			}
+
+			.btn-register {
+				width: 100%;
+				padding: 10px;
+				background-color: #ff8a70;
+				color: white;
+				border: none;
+				border-radius: 4px;
+				cursor: pointer;
+				font-size: 16px;
+				transition: background-color 0.3s ease;
+			}
+
+			.btn-register:hover,
+			.btn-register:focus {
+				background-color: #ff8a70;
+				outline: none;
+			}
+
+			.register-form .login-link {
+				display: block;
+				text-align: center;
+				margin-top: 10px;
+				color: #8b0000;
+				text-decoration: none;
+			}
+
+			.register-form .login-link:hover {
+				text-decoration: underline;
+			}
+
+			.link-container {
+				display: flex;
+				justify-content: space-between;
+				/* 水平两端对齐 */
+				align-items: center;
+				/* 垂直居中对齐 */
+				margin-top: 10px;
+				/* 根据需要调整间距 */
+			}
+
+			.login-link:hover,
+			.home-link:hover {
+				text-decoration: underline;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="register-container">
+			<div class="register-header">
+				<h2>账号注册</h2>
+			</div>
+			<form id="registerForm">
+				<div class="form-group">
+					<label for="username">登录账号</label>
+					<input type="text" class="form-control" id="username" required>
+				</div>
+				<div class="form-group">
+					<label for="password">登录密码</label>
+					<input type="password" class="form-control" id="password" required>
+				</div>
+				<div class="form-group">
+					<label for="confirmPassword">再次输入密码</label>
+					<input type="password" class="form-control" id="confirmPassword" required>
+				</div>
+				<button type="submit" class="btn-register">注 册</button>
+				<div class="link-container">
+					<a href="login.html" class="login-link">已有账号？点击登录</a>
+					<a href="/" class="home-link">返回首页</a>
+				</div>
+			</form>
+		</div>
+
+		<!-- Modal -->
+		<div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="alertModalLabel"
+			aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="alertModalLabel">提示</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						</button>
+					</div>
+					<div class="modal-body">
+						<p id="modalMessage"></p>
+					</div>
+					<div class="modal-footer" style="justify-content: center;">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal"
+							style="background-color: #ff8a70; box-shadow: none; color: white;">关闭</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 引入 jQuery -->
+		<script src="./js/jquery-3.5.1.min.js"></script>
+		<!-- 引入 Bootstrap 的 JavaScript 文件 -->
+		<script src="./js/bootstrap.bundle.min.js"></script>
+		<script>
+			$(document).ready(function() {
+				$('#registerForm').on('submit', async function(e) {
+					e.preventDefault();
+					const username = $('#username').val();
+					const password = $('#password').val();
+					const confirmPassword = $('#confirmPassword').val();
+
+					const usernameRegex = /^[a-zA-Z0-9]+$/; // 只允许字母和数字
+					if (!usernameRegex.test(username)) {
+						showModal("错误", "账号名称只能包含字母和数字，不能包含特殊符号、中文或空格！");
+						return;
+					}
+
+					if (password.length < 8) {
+						showModal("错误", "密码长度必须至少为8位！");
+						return;
+					}
+
+					if (password !== confirmPassword) {
+						showModal("错误", "两次输入的密码不一致！");
+						return;
+					}
+
+					const db = await openDatabase();
+					const success = await registerUser(db, username, password);
+
+					if (success) {
+						showModal("成功", "注册成功！3秒后跳转到登录页面。", true);
+						startCountdown(3); // 倒计时3秒
+					}
+				});
+
+				async function openDatabase() {
+					return new Promise((resolve, reject) => {
+						const request = indexedDB.open("PandaHeroDB", 1);
+						request.onupgradeneeded = function(e) {
+							const db = e.target.result;
+							if (!db.objectStoreNames.contains("users")) {
+								db.createObjectStore("users", {
+									keyPath: "username",
+									autoIncrement: false
+								});
+							}
+						};
+						request.onsuccess = function(e) {
+							resolve(e.target.result);
+						};
+						request.onerror = function(e) {
+							reject(e.target.error);
+						};
+					});
+				}
+
+				async function registerUser(db, username, password) {
+					return new Promise((resolve, reject) => {
+						const transaction = db.transaction(["users"], "readwrite");
+						const store = transaction.objectStore("users");
+						const request = store.get(username);
+
+						request.onsuccess = function() {
+							if (request.result) {
+								showModal("错误", "用户名已存在！");
+								resolve(false);
+							} else {
+								const addRequest = store.add({
+									username,
+									password
+								});
+								addRequest.onsuccess = function() {
+									resolve(true);
+								};
+								addRequest.onerror = function() {
+									showModal("错误", "注册失败！");
+									resolve(false);
+								};
+							}
+						};
+					});
+				}
+
+				// 显示模态框
+				function showModal(title, message, success = false) {
+					$('#alertModalLabel').text(title);
+					$('#modalMessage').text(message);
+					$('#alertModal').modal('show');
+
+					if (success) {
+						startCountdown(3); // 倒计时3秒
+					}
+				}
+
+				// 倒计时函数
+				function startCountdown(seconds) {
+					let count = seconds;
+					const countdownElement = $('#modalMessage');
+
+					const interval = setInterval(() => {
+						countdownElement.text(`倒计时：${count} 秒`);
+						count--;
+
+						if (count < 0) {
+							clearInterval(interval);
+							$('#alertModal').modal('hide');
+							window.location.href = 'login.html'; // 倒计时结束后跳转
+						}
+					}, 1000);
+				}
+			});
+		</script>
+	</body>
+</html>

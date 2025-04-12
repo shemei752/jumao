@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="google-site-verification" content="AYp5w_0XIv7KKOm1ZFDDchLLA79W0mq8oAxnjifhrHA" />
+		<meta name="keywords"
+			content="橘猫接码平台,Receive SMS Online China,在线短信接收,短信验证码接收,在线短信接收平台,免费短信平台,免费接码平台,免费验证码接收平台,代收手机短信验证码,国外短信接收平台,手机短信验证码,手机验证码平台,接码平台,短信验证码,验证码平台,手机验证码,网站验证码短信平台,接收手机验证码平台,sms短信，接码号 - 在线接收短信验证码，接码短信平台，短信验证码，验证码接收平台，验证码接收，验证码平台，接码，接码验证码平台app，接码软件，接码注册短信平台，接码验证码平台，接码软件，接码网站，free sms receive">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>橘猫接码</title>
+		<link href="./css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="./css/all.min.css">
+		<style>
+			/* 隐藏滚动条，但允许滚动 */
+			html,
+			body {
+				background-image: url('./img/background.jpg');
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
+				background-attachment: fixed;
+				overflow: auto;
+				scrollbar-width: none;
+				-ms-overflow-style: none;
+			}
+
+			body {
+				background-color: #f8f9fa;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				padding: 20px;
+			}
+
+			.header-card {
+				background-color: #ff8a70;
+				color: white;
+				padding: 20px;
+				text-align: center;
+				border-radius: 10px;
+				width: 100%;
+				max-width: 600px;
+				margin-bottom: 20px;
+			}
+
+			.header-card h1 {
+				margin: 1px 0;
+			}
+
+			.container {
+				width: 100%;
+				max-width: 600px;
+				padding: 20px;
+				background-color: #fff;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+				border-radius: 10px;
+			}
+
+			.nav-tabs {
+				margin-bottom: 10px;
+			}
+
+			.tab-content {
+				border-radius: 0 0 5px 5px;
+				padding: 5px 20px 20px 20px;
+			}
+
+			.button {
+				border: none;
+				background-color: #ff8a70;
+				color: white;
+				padding: 10px 20px;
+				cursor: pointer;
+				margin-right: 5px;
+				outline: none !important;
+			}
+
+			.button:hover {
+				background-color: #ff8a70;
+			}
+
+			.modal-header {
+				background-color: #ff8a70;
+				color: white;
+			}
+
+			.modal-footer {
+				justify-content: center;
+			}
+
+			.card {
+				background-color: #fff;
+				border-radius: 5px;
+				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+				padding: 10px;
+				margin-bottom: 10px;
+			}
+
+			.nav-tabs .nav-link {
+				border-radius: 5px 5px 0 0;
+				color: #000;
+			}
+
+			.nav-tabs .nav-link.active {
+				background-color: #ff8a70;
+				color: #fff;
+				border-bottom: 1px solid #fff;
+			}
+
+			.form-group {
+				margin-bottom: 15px;
+				display: flex;
+				align-items: center;
+			}
+
+			.form-group .form-control {
+				flex: 1;
+				margin-right: 10px;
+				color: #000;
+			}
+
+			.form-group .button {
+				margin: 0;
+				border-radius: 5px;
+				outline: none !important;
+			}
+
+			.recharge-button {
+				width: 100%;
+				margin-top: 10px;
+				margin-bottom: 20px;
+				border-radius: 5px;
+				outline: none !important;
+			}
+
+			.buy-button {
+				width: 100%;
+				margin-bottom: 20px;
+				border-radius: 5px;
+				outline: none !important;
+			}
+
+			.button-group {
+				display: flex;
+				justify-content: space-between;
+			}
+
+			.button-group .button {
+				flex: 1;
+				margin: 5px;
+				border-radius: 5px;
+			}
+
+			#dad .btn-block {
+				margin-top: 20px;
+			}
+
+			/* 自定义单选按钮样式 */
+			.btn-group-toggle .btn {
+				border: 1px solid #ccc;
+				padding: .375rem .75rem;
+				color: #fff;
+				background-color: #ff8a70;
+				transition: all 0.3s ease;
+			}
+
+			/* 取消勾选时的样式 */
+			.btn-group-toggle .btn:not(.active) {
+				background-color: #f8f9fa !important;
+				/* 未选中时的背景颜色 */
+				color: #000 !important;
+				/* 未选中时的文字颜色 */
+				border-color: #ccc !important;
+				/* 未选中时的边框颜色 */
+				box-shadow: none !important;
+				/* 确保未选中时没有阴影 */
+			}
+
+			.btn-group-toggle .btn.active {
+				background-color: #ff8a70 !important;
+				border-color: #ff8a70;
+				color: #fff;
+			}
+
+			/* 去除按钮点击和焦点时的阴影 */
+			.btn-group-toggle .btn:focus,
+			.btn-group-toggle .btn:active,
+			.btn-group-toggle .btn.active,
+			.btn-group-toggle .btn.active:focus,
+			.btn-group-toggle .btn.active:active {
+				outline: none;
+				box-shadow: none !important;
+				/* 使用 !important 来确保样式被应用 */
+			}
+
+			/* 重置按钮的默认样式 */
+			.toggle-announcement {
+				background-color: transparent;
+				border: none;
+				box-shadow: none !important;
+				outline: none;
+				text-decoration: none;
+				/* 去掉文字下划线 */
+				color: inherit;
+			}
+
+			/* 重置按钮的默认样式 */
+			.toggle-announcement {
+				background-color: transparent;
+				border: none;
+				box-shadow: none !important;
+				outline: none;
+				text-decoration: none;
+				/* 去掉文字下划线 */
+				color: inherit;
+			}
+
+			/* 去掉按钮点击后的阴影 */
+			.toggle-announcement:focus,
+			.toggle-announcement:active,
+			.toggle-announcement.active,
+			.toggle-announcement:hover {
+				box-shadow: none !important;
+				outline: none;
+				text-decoration: none;
+				/* 确保在所有状态下都没有下划线 */
+			}
+
+			.form-control:disabled {
+				background-color: #f8f9fa;
+				/* 浅灰色背景 */
+				border-color: #ccc;
+				/* 边框颜色 */
+				color: #6c757d;
+				/* 文字颜色 */
+				opacity: 1;
+				/* 禁用输入框的不透明度 */
+			}
+
+			.form-control:disabled::placeholder {
+				color: #6c757d;
+				/* 占位符颜色 */
+			}
+
+			.pointer {
+				cursor: pointer;
+				/* 设置鼠标指针为手形 */
+			}
+		</style>
+	</head>
+	<body>
+
+		<div class="header-card">
+			<h1>橘猫接码</h1>
+			<p>接码短信平台集合实卡短信接码</p>
+		</div>
+
+		<div class="container">
+			<div class="card" style="padding: 0;">
+				<button class="btn btn-link toggle-announcement" data-toggle="collapse" data-target="#collapseSection"
+					aria-expanded="false" aria-controls="collapseSection">
+					<span style="color: #000;" id="toggleText">展开公告</span>
+					<i class="toggle-arrow fas fa-chevron-down" style="color: #000;"></i>
+				</button>
+				<div class="collapse" id="collapseSection">
+					<div style="padding: 8px;">
+						<div>客服TG：<a href="https://t.me/meiying52bot">@meiying52bot</a></div>
+						<div>任何项目都是首码，可注册任何APP/网站。</div>
+						<div>支持全球地区项目接码服务！可在三天内无限接码！</div>
+					</div>
+				</div>
+			</div>
+
+			<ul class="nav nav-tabs" id="myTab" role="tablist">
+				<li class="nav-item" role="presentation">
+					<a class="nav-link active" id="tab-jiem" data-toggle="tab" href="#jiem" role="tab"
+						aria-controls="jiem" aria-selected="true">接码</a>
+				</li>
+				<li class="nav-item" role="presentation">
+					<a class="nav-link" id="tab-fad" data-toggle="tab" href="#fad" role="tab" aria-controls="fad"
+						aria-selected="false">发短信</a>
+				</li>
+				<li class="nav-item" role="presentation">
+					<a class="nav-link" id="tab-dad" data-toggle="tab" href="#dad" role="tab" aria-controls="dad"
+						aria-selected="false">打电话</a>
+				</li>
+				<li class="nav-item" role="presentation">
+					<a class="nav-link" id="tab-chongzhi" data-toggle="tab" href="#chongzhi" role="tab"
+						aria-controls="chongzhi" aria-selected="false">充值</a>
+				</li>
+				<li class="nav-item" role="presentation">
+					<a class="nav-link" id="tab-wode" data-toggle="tab" href="#wode" role="tab" aria-controls="wode"
+						aria-selected="false" onclick="checkLogin()">我的</a>
+				</li>
+				<li class="nav-item" role="presentation" hidden>
+					<a class="nav-link" id="tab-api" data-toggle="tab" href="#api" role="tab" aria-controls="api"
+						aria-selected="false">API文档</a>
+				</li>
+			</ul>
+			<div class="tab-content" id="myTabContent">
+				<div class="tab-pane fade show active" id="jiem" role="tabpanel" aria-labelledby="tab-jiem">
+					<!-- 接码选项卡内容 -->
+					<button class="button recharge-button" id="recharge">充值余额</button>
+					<div class="form-group">
+						<label for="operator">运营商：</label>
+						<select class="form-control operator" name="operator">
+							<option value="domestic">国内接码</option>
+							<option value="international">国际接码</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="region">归属地：</label>
+						<select class="form-control region" name="region">
+							<!-- 动态生成 -->
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="project">项目类：</label>
+						<select class="form-control project" name="project">
+							<!-- 动态生成 -->
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="number">指定号码：</label>
+						<input type="text" class="form-control" id="number" placeholder="输入号码或号段前3位或（例：152、188）可不填">
+					</div>
+					<div class="button-group">
+						<button class="button getNumber">获取号码</button>
+						<button class="button blockNumber">拉黑号码</button>
+						<button class="button releaseNumber">释放号码</button>
+					</div>
+					<div class="form-group">
+						<label for="phone">手机号码：</label>
+						<input type="text" class="form-control" id="phone" placeholder="请先取号" disabled>
+						<button class="button">复制</button>
+					</div>
+					<div class="form-group">
+						<label for="code">验证码：</label>
+						<input type="text" class="form-control" id="code" placeholder="等待获取验证码" disabled>
+						<button class="button">复制</button>
+					</div>
+					<div class="form-group">
+						<label for="smsContent">短信内容：</label>
+						<input type="text" class="form-control" id="smsContent" placeholder="等待获取短信内容" disabled>
+						<button class="button">复制</button>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="fad" role="tabpanel" aria-labelledby="tab-fad">
+					<!-- 发短信选项卡内容 -->
+					<div class="form-group">
+						<label for="operator">运营商：</label>
+						<select class="form-control operator" name="operator">
+							<option value="domestic">国内接码</option>
+							<option value="international">国际接码</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="region">归属地：</label>
+						<select class="form-control region" name="region">
+							<!-- 动态生成 -->
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="project">项目类：</label>
+						<select class="form-control project" name="project">
+							<!-- 动态生成 -->
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="number">指定号码：</label>
+						<input type="text" class="form-control" id="number" placeholder="输入号码或号段前3位或（例：152、188）可不填">
+					</div>
+					<div class="button-group">
+						<button class="button getNumber">获取号码</button>
+						<button class="button blockNumber">拉黑号码</button>
+						<button class="button releaseNumber">释放号码</button>
+					</div>
+					<div class="form-group">
+						<label for="phone">手机号码：</label>
+						<input type="text" class="form-control" id="phone" placeholder="请先取号" disabled>
+						<button class="button">复制</button>
+					</div>
+					<div class="form-group">
+						<label for="code">验证码：</label>
+						<input type="text" class="form-control" id="code" placeholder="等待获取验证码" disabled>
+						<button class="button">复制</button>
+					</div>
+					<div class="form-group">
+						<label for="smsContent">短信内容：</label>
+						<input type="text" class="form-control" id="smsContent" placeholder="等待获取短信内容" disabled>
+						<button class="button">复制</button>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="dad" role="tabpanel" aria-labelledby="tab-dad">
+					<!-- 打电话选项卡内容 -->
+					<form>
+						<div class="form-group">
+							<label>号码类型：</label>
+							<div class="btn-group-toggle" data-toggle="buttons">
+								<label class="btn btn-secondary active">
+									<input type="radio" name="numberType" id="virtualNumber" autocomplete="off" checked>
+									虚拟号
+								</label>
+								<label class="btn btn-secondary">
+									<input type="radio" name="numberType" id="realNumber" autocomplete="off"> 实体号
+								</label>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="countryCode">号码归属地：</label>
+							<select class="form-control" id="countryCode">
+								<!-- 选项将通过JavaScript动态生成 -->
+							</select>
+						</div>
+						<div class="form-group">
+							<label>租期：</label>
+							<div class="btn-group-toggle" data-toggle="buttons">
+								<label class="btn btn-secondary active">
+									<input type="radio" name="rentalPeriod" id="dailyRental" autocomplete="off" checked>
+									日租
+								</label>
+								<label class="btn btn-secondary">
+									<input type="radio" name="rentalPeriod" id="weeklyRental" autocomplete="off"> 周租
+								</label>
+								<label class="btn btn-secondary">
+									<input type="radio" name="rentalPeriod" id="monthlyRental" autocomplete="off"> 月租
+								</label>
+								<label class="btn btn-secondary">
+									<input type="radio" name="rentalPeriod" id="quarterlyRental" autocomplete="off"> 季租
+								</label>
+							</div>
+						</div>
+						<div class="form-group">
+							<label>套餐：</label>
+							<div class="btn-group-toggle" data-toggle="buttons">
+								<label class="btn btn-secondary">
+									<input type="checkbox" name="privateCall" id="privateCall" autocomplete="off"> 隐私电话
+								</label>
+								<label class="btn btn-secondary">
+									<input type="checkbox" name="privateSms" id="privateSms" autocomplete="off"> 隐私短信
+								</label>
+							</div>
+						</div>
+						<div class="form-group">
+							<span for="estimatedCost" style="width: 100px;">预计费用：</span>
+							<span class="form-control-plaintext" id="estimatedCost"></span>
+						</div>
+						<button type="button" class="button buy-button">立即购买</button>
+					</form>
+				</div>
+				<div class="tab-pane fade" id="chongzhi" role="tabpanel" aria-labelledby="tab-chongzhi">
+					<p>1 美元 = 1 USDT</p>
+					<p>充值金额/价格关系：</p>
+					<ul>
+						<li>单次充值10 USDT：赠送百分之5</li>
+						<li>单次充值30 USDT：赠送百分之10</li>
+						<li>单次充值50 USDT：赠送百分之20</li>
+						<li>单次充值100 USDT：赠送百分之30</li>
+						<li>单次充值200 USDT：赠送百分之50</li>
+					</ul>
+					<p>对于首充客户满50 USDT（含50）则赠送对应金额到平台余额</p>
+					<input type="number" class="form-control" id="amount" min="5" max="1000"
+						placeholder="输入5-1000的任意金额">
+					<button class="button recharge-button" id="startRecharge">充值</button>
+				</div>
+				<div class="tab-pane fade" id="wode" role="tabpanel" aria-labelledby="tab-wode">
+					<div class="card">
+						<div class="d-flex align-items-center mb-3">
+							<img src="./img/avatar.png" alt="用户头像" class="rounded-circle mr-3" width="50" height="50">
+							<div>
+								<h5 id="username">游客用户</h5>
+								<span class="badge badge-danger">VIP用户</span>
+							</div>
+						</div>
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item d-flex justify-content-between align-items-center">
+								账户余额
+								<span class="badge badge-secondary">0 RMB</span>
+							</li>
+							<li class="list-group-item">
+								<span class="pointer" onclick="apidoc()">API文档</span>
+							</li>
+							<li class="list-group-item">
+								<span class="pointer" onclick="exitLogin()">退出登录</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="api" role="tabpanel" aria-labelledby="tab-api">
+
+					<h2>一、登录账号</h2>
+					<p>/api/login/?username=账号&password=密码</p>
+					<p>传参方式：Get</p>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>参数名</th>
+								<th>含义</th>
+								<th>类型</th>
+								<th>说明</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>username</td>
+								<td>用户名</td>
+								<td>String</td>
+								<td>必填</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>password</td>
+								<td>密码</td>
+								<td>String</td>
+								<td>必填</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h2>二、获取余额</h2>
+					<p>/api/get_myinfo/?token=xxxx</p>
+					<p>传参方式：Get</p>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>参数名</th>
+								<th>含义</th>
+								<th>类型</th>
+								<th>说明</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td></td>
+								<td>token</td>
+								<td>通过API后获取到的token</td>
+								<td>String</td>
+								<td>必填</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h2>三、获取号码</h2>
+					<p>/api/get_mobile?token=xxxx&project_id=项目ID</p>
+					<p>传参方式：Get</p>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>参数名</th>
+								<th>含义</th>
+								<th>类型</th>
+								<th>说明</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>token</td>
+								<td>通过API登录后获取到的token</td>
+								<td>String</td>
+								<td>必填</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>project_id</td>
+								<td>项目ID</td>
+								<td>int</td>
+								<td>必填</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>operator</td>
+								<td>运营商（不填或0=不限，1=实卡，2=虚拟）</td>
+								<td>int</td>
+								<td>选填</td>
+							</tr>
+							<tr>
+								<td>4</td>
+								<td>phone_num</td>
+								<td>指定号码或号段，传入完整手机号即为指定取号，传入开头前几位即为指定号段</td>
+								<td>int</td>
+								<td>选填</td>
+							</tr>
+							<tr>
+								<td>5</td>
+								<td>province</td>
+								<td>省份筛选：如北京（不带'省'字）</td>
+								<td>String</td>
+								<td>选填</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h2>四、获取短信</h2>
+					<p>/api/get_sms?token=xxxxxx&project_id=项目ID&phone_num=获取到的号码</p>
+					<p>传参方式：Get</p>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>参数名</th>
+								<th>含义</th>
+								<th>类型</th>
+								<th>说明</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>token</td>
+								<td>通过API登录后获取到的token</td>
+								<td>String</td>
+								<td>必填</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>project_id</td>
+								<td>项目ID</td>
+								<td>int</td>
+								<td>必填</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>phone_num</td>
+								<td>获取到的号码</td>
+								<td>int</td>
+								<td>必填</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h2>五、释放号码</h2>
+					<p>/api/release_phone?token=xxxxxxx&project_id=项目ID&phone_num=获取到的号码</p>
+					<p>传参方式：Get</p>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>参数名</th>
+								<th>含义</th>
+								<th>类型</th>
+								<th>说明</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>token</td>
+								<td>通过API登录后获取到的token</td>
+								<td>String</td>
+								<td>必填</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>project_id</td>
+								<td>项目ID</td>
+								<td>int</td>
+								<td>必填</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>phone_num</td>
+								<td>获取到的号码</td>
+								<td>int</td>
+								<td>必填</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h2>六、拉黑号码</h2>
+					<p>/api/black_phone?token=xxxxxxxx&project_id=项目ID&phone_num=获取到的号码</p>
+					<p>传参方式：Get</p>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>参数名</th>
+								<th>含义</th>
+								<th>类型</th>
+								<th>说明</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>token</td>
+								<td>通过API登录后获取到的token</td>
+								<td>String</td>
+								<td>必填</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>project_id</td>
+								<td>项目ID</td>
+								<td>int</td>
+								<td>必填</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>phone_num</td>
+								<td>获取到的号码</td>
+								<td>int</td>
+								<td>必填</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h2>注意事项</h2>
+					<ul>
+						<li><strong>延迟要求：</strong>所有接口请求必须加延迟 > 2秒，以避免对服务器造成过大压力。</li>
+						<li><strong>恶意请求处理：</strong>对服务器造成影响的恶意请求将清空余额且不退款。</li>
+					</ul>
+
+				</div>
+			</div>
+		</div>
+
+		<!-- 退出登录的模态框 -->
+		<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel"
+			aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="logoutModalLabel">退出登录</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						</button>
+					</div>
+					<div class="modal-body">
+						<p>您确定要退出登录吗？</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+						<button type="button" class="btn btn-danger" onclick="logout()"
+							style="background-color: #ff8a70; box-shadow: none">确定</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal -->
+		<div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="alertModalLabel"
+			aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="alertModalLabel">提示</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						</button>
+					</div>
+					<div class="modal-body">
+						<p id="modalMessage"></p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal"
+							style="background-color: #ff8a70;box-shadow: none">关闭</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="./js/jquery-3.5.1.min.js"></script>
+		<script src="./js/bootstrap.min.js"></script>
+		<script>
+			document.querySelector('.toggle-announcement').addEventListener('click', function() {
+				if (document.querySelector('#collapseSection').classList.contains('show')) {
+					document.querySelector('#toggleText').innerText = '展开公告';
+					document.querySelector('.toggle-arrow').classList.replace('fa-chevron-up', 'fa-chevron-down');
+				} else {
+					document.querySelector('#toggleText').innerText = '收起公告';
+					document.querySelector('.toggle-arrow').classList.replace('fa-chevron-down', 'fa-chevron-up');
+				}
+			});
+		</script>
+		<script src="./js/select-data.js" charset="UTF-8"></script>
+		<script>
+			$(document).ready(function() {
+				const username = localStorage.getItem('loggedInUser');
+				if (username != null) {
+					$("#username").text(username);
+				}
+
+				// 初始化归属地和项目类下拉菜单
+				function updateRegionAndProject(operator) {
+					const regionSelect = $(".region");
+					const projectSelect = $(".project");
+
+					// 清空当前选项
+					regionSelect.empty();
+					projectSelect.empty();
+
+					// 添加新的选项
+					regions[operator].forEach(region => {
+						regionSelect.append(`<option value="${region.value}">${region.text}</option>`);
+					});
+
+					projects[operator].forEach(project => {
+						projectSelect.append(`<option value="${project.value}">${project.text}</option>`);
+					});
+				}
+
+				// 监听运营商选择变化
+				$(".operator").change(function() {
+					const selectedOperator = $(this).val();
+					updateRegionAndProject(selectedOperator);
+				});
+
+				// 初始化默认值
+				updateRegionAndProject($(".operator").val());
+			});
+		</script>
+		<script>
+			$(document).ready(function() {
+
+				$("#estimatedCost").text('3.3 RMB');
+
+				$('#recharge').click(function() {
+					// 切换到“充值”选项卡
+					$('#tab-chongzhi').tab('show');
+				});
+
+				$('.getNumber').click(function() {
+					const originalText = $(this).text(); // 保存原始文本
+					$(this).text('获取中...');
+
+					// 模拟延时操作
+					setTimeout(function() {
+						$(this).text(originalText); // 恢复原始文本
+					}.bind(this), 1000); // 1秒后恢复
+
+					// 其他逻辑（如检查登录状态、显示模态框等）
+					const username = localStorage.getItem('loggedInUser');
+					if (!username) {
+						window.location.href = 'login.html';
+					} else {
+						$('#modalMessage').text('余额不足，请充值！');
+						setTimeout(function() {
+							$('#alertModal').modal('show');
+						}, 1000); // 1秒后显示模态框
+					}
+				});
+
+				$('.blockNumber').click(function() {
+					$('#modalMessage').text('未获取手机号码');
+					$('#alertModal').modal('show');
+				});
+
+				$('.releaseNumber').click(function() {
+					$('#modalMessage').text('未获取手机号码');
+					$('#alertModal').modal('show');
+				});
+
+				$('.buy-button').click(function() {
+					const username = localStorage.getItem('loggedInUser');
+					if (!username) {
+						window.location.href = 'login.html';
+					} else {
+						$('#modalMessage').text('余额不足，请充值！');
+						setTimeout(function() {
+							$('#alertModal').modal('show');
+						}, 500); // 1秒后显示模态框
+					}
+				});
+
+				$("#startRecharge").click(function() {
+					setTimeout(function() {
+						const username = localStorage.getItem('loggedInUser');
+						if (!username) {
+							window.location.href = 'login.html';
+						} else {
+							const amount = $("#amount").val();
+							if (amount == undefined || '' == amount) {
+								$('#modalMessage').text('充值金额不能为空');
+								$('#alertModal').modal('show');
+							} else if (amount < 5) {
+								$('#modalMessage').text('充值金额不能小于5');
+								$('#alertModal').modal('show');
+							} else {
+								sessionStorage.setItem('amount', amount);
+								window.location.href = 'recharge.html';
+							}
+						}
+					}, 1000)
+				});
+
+			});
+
+			$(document).ready(function() {
+				// 定义费用规则
+				const costs = {
+					virtual: {
+						daily: 3,
+						weekly: 12,
+						monthly: 48,
+						quarterly: 100
+					},
+					real: {
+						daily: 8,
+						weekly: 17,
+						monthly: 53,
+						quarterly: 105
+					},
+					privateCall: 5, // 隐私电话费用
+					privateSms: 5 // 隐私短信费用
+				};
+
+				// 监听虚拟号/实体号的选择
+				$('#virtualNumber, #realNumber').click(function() {
+					updateEstimatedCost();
+				});
+
+				// 监听租期的选择
+				$('#dailyRental, #weeklyRental, #monthlyRental, #quarterlyRental').click(function() {
+					updateEstimatedCost();
+				});
+
+				// 监听套餐的选择
+				$('#privateCall, #privateSms').click(function() {
+					updateEstimatedCost();
+				});
+
+				// 更新预计费用的函数
+				function updateEstimatedCost() {
+					let baseCost = 0;
+
+					// 获取当前选择的号码类型
+					const numberType = $('#virtualNumber').is(':checked') ? 'virtual' : 'real';
+
+					// 获取当前选择的租期
+					const rentalPeriod = $('#dailyRental').is(':checked') ? 'daily' :
+						$('#weeklyRental').is(':checked') ? 'weekly' :
+						$('#monthlyRental').is(':checked') ? 'monthly' :
+						$('#quarterlyRental').is(':checked') ? 'quarterly' : 'daily';
+
+					// 获取当前选择的套餐
+					const privateCall = $('#privateCall').is(':checked');
+					const privateSms = $('#privateSms').is(':checked');
+
+					// 计算基础费用
+					baseCost = costs[numberType][rentalPeriod];
+
+					// 添加套餐费用
+					if (privateCall) baseCost += costs.privateCall;
+					if (privateSms) baseCost += costs.privateSms;
+
+					// 更新页面上的预计费用
+					$('#estimatedCost').text(baseCost.toFixed(1) + ' RMB');
+				}
+
+				// 初始化预计费用
+				updateEstimatedCost();
+			});
+
+			$(document).ready(function() {
+				// 获取下拉菜单的DOM元素
+				const countryCodeSelect = $("#countryCode");
+
+				// 清空当前选项
+				countryCodeSelect.empty();
+
+				// 动态生成下拉菜单选项
+				countryCodes.forEach(country => {
+					countryCodeSelect.append(`<option value="${country.value}">${country.text}</option>`);
+				});
+			});
+
+			function checkLogin() {
+				const username = localStorage.getItem('loggedInUser');
+				if (!username) {
+					window.location.href = 'login.html'; // Redirect to login page if not logged in
+				}
+			}
+
+			function apidoc() {
+				$('#tab-api').tab('show');
+			}
+
+			function exitLogin() {
+				$('#logoutModal').modal('show'); // Show logout confirmation modal
+			}
+
+			function logout() {
+				localStorage.removeItem('loggedInUser'); // Remove user from local storage
+				window.location.href = '/'; // Redirect to login page
+			}
+		</script>
+
+	</body>
+</html>
